@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787212958078",
+    "project_id": "tic-tac-toe-super-strike-a5f38",
+    "storage_bucket": "tic-tac-toe-super-strike-a5f38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787212958078:android:79215dcc9b4ebdcd7d5b2f",
+        "android_client_info": {
+          "package_name": "com.fuzzlegames.tictactoesuperstrike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787212958078-jq50iofh32fd1ot7utl0lt189p82k4r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwNGFgDs99v9LCynIaCHEq0_35cFHwwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787212958078-jq50iofh32fd1ot7utl0lt189p82k4r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
