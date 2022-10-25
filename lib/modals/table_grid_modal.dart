@@ -99,7 +99,7 @@ class TableGridModal {
            ticTacToe(bottomCell);
         }
       }
-      if(validDiagonal){
+      //if(validDiagonal){
         if(topLeftCell?.filledLetter == "O"){
            ticTacToe(topLeftCell);
         }
@@ -112,7 +112,7 @@ class TableGridModal {
         if(bottomLeftCell?.filledLetter == "O"){
            ticTacToe(bottomLeftCell);
         }
-      }
+      //}
     }
   } 
 }
