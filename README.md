@@ -1,4 +1,4 @@
-# lol
+# Tic Tac Toe - Super Strike
 
 A new Flutter project.
 
