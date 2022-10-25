@@ -33,36 +33,30 @@ class TableGridModal {
     var validRightColumnIndex = rightColumnIndex < columns;
     var validTopRowIndex = topRowIndex >= 0;
     var validBottomRowIndex  = bottomRowIndex < rows;
-    var validDiagonal = validLeftColumnIndex && validTopRowIndex && validRightColumnIndex && validBottomRowIndex;
 
     var leftCell = validLeftColumnIndex ? tableRows.elementAt(currentCell.rowIndex).tableCells.elementAt(leftColumnIndex): null;
     var rightCell = validRightColumnIndex ? tableRows.elementAt(currentCell.rowIndex).tableCells.elementAt(rightColumnIndex): null;
     var topCell = validTopRowIndex ? tableRows.elementAt(topRowIndex).tableCells.elementAt(currentCell.columnIndex) : null;
     var bottomCell = validBottomRowIndex ? tableRows.elementAt(bottomRowIndex).tableCells.elementAt(currentCell.columnIndex): null;
 
-    var  topLeftCell = validDiagonal ? tableRows.elementAt(topRowIndex).tableCells.elementAt(leftColumnIndex): null;
-    var  bottomLeftCell =  validDiagonal ? tableRows.elementAt(bottomRowIndex).tableCells.elementAt(leftColumnIndex): null;
-    var  topRightCell =  validDiagonal ? tableRows.elementAt(topRowIndex).tableCells.elementAt(rightColumnIndex): null;
-    var  bottomRightCell =  validDiagonal ? tableRows.elementAt(bottomRowIndex).tableCells.elementAt(rightColumnIndex): null;
+    var  topLeftCell = validTopRowIndex &&  validLeftColumnIndex ? tableRows.elementAt(topRowIndex).tableCells.elementAt(leftColumnIndex): null;
+    var  bottomLeftCell =  validBottomRowIndex && validLeftColumnIndex ? tableRows.elementAt(bottomRowIndex).tableCells.elementAt(leftColumnIndex): null;
+    var  topRightCell =  validTopRowIndex && validRightColumnIndex ? tableRows.elementAt(topRowIndex).tableCells.elementAt(rightColumnIndex): null;
+    var  bottomRightCell =  validBottomRowIndex && validRightColumnIndex ? tableRows.elementAt(bottomRowIndex).tableCells.elementAt(rightColumnIndex): null;
     
     if (currentCell.filledLetter == "O") {
-      if(validLeftColumnIndex && validRightColumnIndex){
         if (leftCell?.filledLetter == 'L' && 
             rightCell?.filledLetter == 'L') {
               leftCell?.strike('horizontal');
               currentCell.strike('horizontal');
               rightCell?.strike('horizontal');
         }
-      }
-      if(validTopRowIndex && validBottomRowIndex) {
         if (topCell?.filledLetter == 'L' && 
             bottomCell?.filledLetter == 'L') {
               topCell?.strike('vertical');
               currentCell.strike('vertical');
               bottomCell?.strike('vertical');
         }
-      }
-      if(validDiagonal){
         if(topLeftCell?.filledLetter == 'L' && 
            bottomRightCell?.filledLetter == 'L' ){
             topLeftCell?.strike('leftRightDiagonal');
@@ -75,31 +69,20 @@ class TableGridModal {
             currentCell.strike('rightLeftDiagonal');
             bottomLeftCell?.strike('rightLeftDiagonal');
         }
-      }
     } 
     if (currentCell.filledLetter == "L") { 
-      if(validLeftColumnIndex){
         if(leftCell?.filledLetter == "O"){
            ticTacToe(leftCell);
         }
-       
-      }
-      if(validRightColumnIndex){
         if(rightCell?.filledLetter == "O"){
            ticTacToe(rightCell);
         }
-      }
-      if(validTopRowIndex){
         if(topCell?.filledLetter == "O"){
            ticTacToe(topCell);
         }
-      }
-      if(validBottomRowIndex){
         if(bottomCell?.filledLetter == "O"){
            ticTacToe(bottomCell);
         }
-      }
-      //if(validDiagonal){
         if(topLeftCell?.filledLetter == "O"){
            ticTacToe(topLeftCell);
         }
@@ -112,7 +95,6 @@ class TableGridModal {
         if(bottomLeftCell?.filledLetter == "O"){
            ticTacToe(bottomLeftCell);
         }
-      //}
     }
   } 
 }
