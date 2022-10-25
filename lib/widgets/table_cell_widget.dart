@@ -13,7 +13,7 @@ class TableCellWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TableCellProvider>(
-      builder: (BuildContext ctx, tableCell, Widget? child) => GestureDetector(
+      builder: (BuildContext ctx, TableCellProvider tableCell, Widget? child) => GestureDetector(
         onTap: () {
           tableCell.fill("L");
           tableGrid.ticTacToe(tableCell);
