@@ -6,18 +6,18 @@
     "configurations": [
         
         {
-            "name": "lol",
+            "name": "tictactoesuperstrike",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "lol (profile mode)",
+            "name": "tictactoesuperstrike (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "lol (release mode)",
+            "name": "tictactoesuperstrike (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

@@ -5,6 +5,7 @@ class TableCellProvider with ChangeNotifier {
   final List<int> cellIndex;
   final int rowIndex;
   final int columnIndex;
+  late bool isSelected;
   late bool filled;
   late String filledLetter;
   late bool horizontalStrike;
@@ -18,6 +19,7 @@ class TableCellProvider with ChangeNotifier {
     required this.cellIndex,
     required this.rowIndex,
     required this.columnIndex,
+    this.isSelected = false,
     this.filled = false,
     this.filledLetter = ' ',
     this.horizontalStrike = false,
@@ -27,16 +29,20 @@ class TableCellProvider with ChangeNotifier {
     this.striked = false,
   });
 
-  void fill(String latter) {
+  void fill(String letter) {
     filled = true;
-    if (filledLetter == 'L') {
-      filledLetter = 'O';
-    } else if (filledLetter == 'O') {
-      filledLetter = 'L';
-    } else {
-      filledLetter = latter;
-    }
+    filledLetter = letter;
     notifyListeners();
+  }
+
+  void selectCell(){
+     isSelected = true;
+     notifyListeners();
+  }
+
+  void deselectCell(){
+     isSelected = false;
+     notifyListeners();
   }
 
   void strike(String type) {

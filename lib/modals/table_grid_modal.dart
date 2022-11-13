@@ -7,15 +7,15 @@ class TableGridModal {
   final int rows;
   final int columns;
   final List<TableRowModal> tableRows = [];
-  late PlayerProvider leftPlayer;
-  late PlayerProvider rightPlayer;
+  final List<PlayerProvider> players;
+  late int selectedRowIndex = -1;
+  late int selectedColumnIndex = -1; 
 
   TableGridModal({
     required this.id,
     required this.rows,
     required this.columns,
-    leftPlayer = null,
-    rightPlayer = null,
+    required this.players,
   });
 
   void build(){
@@ -28,7 +28,20 @@ class TableGridModal {
     }
   }
 
-  int ticTacToe(currentCell, {int value = 0}) {
+  void setSelectedIndexes(int rowIndex, int columnIndex){
+      selectedRowIndex = rowIndex;
+      selectedColumnIndex = columnIndex;
+  }
+
+  void unsetSelectedIndexes(){
+    if(selectedRowIndex != -1 && selectedColumnIndex != -1){
+      tableRows.elementAt(selectedRowIndex).tableCells.elementAt(selectedColumnIndex).deselectCell();
+    }
+    selectedRowIndex = -1;
+    selectedColumnIndex = -1;
+  }
+
+  void ticTacToe(currentCell, {int value = 0}) {
     var leftColumnIndex = currentCell.columnIndex - 1;
     var rightColumnIndex = currentCell.columnIndex + 1;
     var topRowIndex = currentCell.rowIndex - 1;
@@ -78,40 +91,38 @@ class TableGridModal {
             bottomLeftCell?.strike('rightLeftDiagonal');
             value++;
         }
+        if(players[0].active){
+          players[0].updateScore(value);
+        } 
+        if(players[1].active){
+          players[1].updateScore(value);
+        }
     } 
     if (currentCell.filledLetter == "L") { 
         if(leftCell?.filledLetter == "O"){
-           value = ticTacToe(leftCell, value:value);
+           ticTacToe(leftCell);
         }
         if(rightCell?.filledLetter == "O"){
-           value = ticTacToe(rightCell, value:value);
+           ticTacToe(rightCell, value:value);
         }
         if(topCell?.filledLetter == "O"){
-           value = ticTacToe(topCell, value:value);
+           ticTacToe(topCell, value:value);
         }
         if(bottomCell?.filledLetter == "O"){
-           value = ticTacToe(bottomCell, value:value);
+           ticTacToe(bottomCell);
         }
         if(topLeftCell?.filledLetter == "O"){
-           value = ticTacToe(topLeftCell, value:value);
+          ticTacToe(topLeftCell);
         }
         if(bottomRightCell?.filledLetter == "O"){
-           value = ticTacToe(bottomRightCell, value:value);
+           ticTacToe(bottomRightCell);
         }
         if(topRightCell?.filledLetter == "O"){
-           value = ticTacToe(topRightCell, value:value);
+           ticTacToe(topRightCell);
         }
         if(bottomLeftCell?.filledLetter == "O"){
-           value = ticTacToe(bottomLeftCell, value:value);
+           ticTacToe(bottomLeftCell);
         }
     }
-    // if(leftPlayer.active){
-    //   leftPlayer.updateScore(value);
-    // } 
-    // if(rightPlayer.active){
-    //   rightPlayer.updateScore(value);
-    // }
-
-    return value;
   } 
 }

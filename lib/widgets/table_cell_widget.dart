@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../providers/table_cell_provider.dart';
 import '../modals/table_grid_modal.dart';
+import 'package:provider/provider.dart';
+
 
 
 class TableCellWidget extends StatelessWidget {
@@ -15,21 +17,24 @@ class TableCellWidget extends StatelessWidget {
     return Consumer<TableCellProvider>(
       builder: (BuildContext ctx, TableCellProvider tableCell, Widget? child) => GestureDetector(
         onTap: () {
-          tableCell.fill("L");
-          tableGrid.ticTacToe(tableCell);
+          if(tableCell.filled != true){
+            tableGrid.unsetSelectedIndexes();
+            tableCell.selectCell();
+            tableGrid.setSelectedIndexes(tableCell.rowIndex, tableCell.columnIndex);
+          }
         },
-          child: SizedBox(
-            height: 48,
-            child: Card(
-              color: tableCell.striked ? Colors.orange : tableCell.filled ? Colors.green : Colors.white,
-              margin: const EdgeInsets.all(1),
-              child: Center(
-                child: Text(
-                  tableCell.filledLetter,
-                ),
+        child: SizedBox(
+          height: 48,
+          child: Card(
+            color: tableCell.striked ? Colors.green : tableCell.filled ? Colors.orange : tableCell.isSelected ? Colors.yellowAccent: Colors.white,
+            margin: const EdgeInsets.all(1),
+            child: Center(
+              child: Text(
+                tableCell.filledLetter,
               ),
             ),
           ),
+        ),
       ),
       child: const Text("Never Changes"),
     );

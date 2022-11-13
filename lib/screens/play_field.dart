@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../modals/table_grid_modal.dart';
+import '../providers/player_provider.dart';
+
 import '../widgets/table_grid_widget.dart';
+import '../widgets/player_controls_widget.dart';
+
 
 class PlayFieldScreen extends StatefulWidget {
   static const routeName = '/play-field';
@@ -15,9 +20,10 @@ class _PlayFieldScreenState extends State<PlayFieldScreen> {
   var tableGrid;
    @override
   void initState() {
-    tableGrid = TableGridModal(id: '1', rows: 10, columns: 8);
-    tableGrid.build();
     super.initState();
+    final List<PlayerProvider> players= [PlayerProvider(id: '1', nickName: 'Player1',active: true),PlayerProvider(id: '2', nickName: 'Player2')];
+    tableGrid = TableGridModal(id: '1', rows: 10, columns: 8, players:players);
+    tableGrid.build();
   }
 
   @override
@@ -33,7 +39,12 @@ class _PlayFieldScreenState extends State<PlayFieldScreen> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        body:  TableGridWidget(tableGrid: tableGrid),
+        body:  Column(
+          children: [
+            TableGridWidget(tableGrid: tableGrid),
+            PlayerControlsWidget(tableGrid: tableGrid)
+          ],
+        ),
       );
   }
 }
