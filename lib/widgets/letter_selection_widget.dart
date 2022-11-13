@@ -21,8 +21,11 @@ class LetterSelectionWidget extends StatelessWidget {
                       tableGrid.ticTacToe(selectedCell);
                       tableGrid.unsetSelectedIndexes();
                       selectedCell.deselectCell();
-                      tableGrid.players[0].togglePlayer();
-                      tableGrid.players[1].togglePlayer();
+                      if(selectedCell.striked == false){
+                        tableGrid.players[0].togglePlayer();
+                        tableGrid.players[1].togglePlayer();
+                      }
+                      
                     }
                   },
                   child: const Card(
@@ -37,8 +40,10 @@ class LetterSelectionWidget extends StatelessWidget {
                       tableGrid.ticTacToe(selectedCell);
                       tableGrid.unsetSelectedIndexes();
                       selectedCell.deselectCell();
-                      tableGrid.players[0].togglePlayer();
-                      tableGrid.players[1].togglePlayer();
+                      if(selectedCell.striked == false){
+                        tableGrid.players[0].togglePlayer();
+                        tableGrid.players[1].togglePlayer();
+                      }
                     }
                   },
                   child: const Card(
