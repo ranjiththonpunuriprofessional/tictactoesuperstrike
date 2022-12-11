@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         title: 'Tic Tac Toe - Super Strike',
         home: FutureBuilder(
           future:  auth.signInAnonymously(),
-          builder: (ctx,snapshot) => snapshot.connectionState == ConnectionState.waiting ? const SplashScreen(): const PlayFieldScreen()
+          builder: (ctx,snapshot) => snapshot.connectionState == ConnectionState.waiting ? const SplashScreen(): const HomeScreen()
         ),
         routes: {
           HomeScreen.routeName:(ctx) => const HomeScreen(),

@@ -14,7 +14,7 @@ class Authentication {
 
   Future<String?> signInAnonymously() async {
      return Future.delayed(
-      const Duration(seconds: 5),
+      const Duration(seconds: 2),
       () async {
         try {
           UserCredential userCredential = await _firebaseAuth.signInAnonymously();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoesuperstrike/screens/play_field.dart';
+
+import '../screens/play_field.dart';
 import '../modals/player_guide_modal.dart';
 
 class PalyerGuideWidget extends StatelessWidget {

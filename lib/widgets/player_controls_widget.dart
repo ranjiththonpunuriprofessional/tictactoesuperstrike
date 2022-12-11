@@ -15,7 +15,7 @@ class PlayerControlsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
+      children: <Widget>[
         ChangeNotifierProvider.value(
                             value: tableGrid.players[0],
                             child: const PlayerWidget(),
