@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/play_field.dart';
+import '../screens/player_waiting.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class HomeWidget extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: (){
-                 Navigator.of(context).pushReplacementNamed(PlayFieldScreen.routeName);
+                 Navigator.of(context).pushReplacementNamed(PlayerWaitingScreen.routeName);
               }, 
               child: const Text('Play')
             ),

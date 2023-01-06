@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "787212958078",
+    "firebase_url": "https://tic-tac-toe-super-strike-a5f38-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "tic-tac-toe-super-strike-a5f38",
     "storage_bucket": "tic-tac-toe-super-strike-a5f38.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "787212958078-jq50iofh32fd1ot7utl0lt189p82k4r4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "787212958078-d7qjr6ake6mkm5ael7dtfpej381f04t9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "sdsd.sd"
+              }
             }
           ]
         }
