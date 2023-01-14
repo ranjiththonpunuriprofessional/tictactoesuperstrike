@@ -15,6 +15,7 @@ import './screens/player_waiting.dart';
 import './screens/splash.dart';
 import './screens/home.dart';
 import '../firebase_services/authentication.dart';
+import './firebase_options.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -26,7 +27,10 @@ void setupSingletons() async {
 Future<void> main() async {
   setupSingletons();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+     name:'tictactoesuperstrike',
+     options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(MyApp());
 }
 
