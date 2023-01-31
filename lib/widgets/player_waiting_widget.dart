@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoesuperstrike/providers/player_entry_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/player_entry_provider.dart';
 
 
 
@@ -13,6 +15,19 @@ class PlayerWaitingWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Text('waiting');
+    return Consumer<PlayerEntryProvider>(
+      builder: (BuildContext ctx, PlayerEntryProvider player, Widget? child) => Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Card(
+                child: Text(player.id),
+              ),
+              Card(
+                child: Text(player.nickName),
+              ),    
+            ],
+          ),
+      child: const Text("Never Changes"),
+    );
   }
 }

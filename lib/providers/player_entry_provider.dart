@@ -11,13 +11,23 @@ class PlayerEntryProvider with ChangeNotifier {
   late bool state;
   late String opponentId;
   late String opponentNickName;
+  late String opponentState;
   late String tableGridId;
 
-
-  PlayerEntryProvider();
-
-  void updateOpponent() {
-   
+  void updatePlayer(playerData) {
+    id = playerData['id'];
+    nickName = playerData['nickName'];
+    state = playerData['state'];
+    if(playerData['opponentNickName'] != null
+      && playerData['opponentId'] != null
+      && playerData['opponentState'] != null
+      && playerData['tableGridId'] != null) {
+        opponentId = playerData['opponentId'];
+        opponentNickName = playerData['opponentNickName'];
+        opponentState = playerData['opponentState'];
+        tableGridId = playerData['tableGridId']; 
+    }
+    notifyListeners();
   }
 
   Future<void> createPlayer() async {
@@ -28,15 +38,10 @@ class PlayerEntryProvider with ChangeNotifier {
     db.create({
       'id':playerId,
       'nickName':playerNickName,
-      'playerState':playerState
+      'state':playerState
     },'players');
-  }
 
-  Future<PlayerEntryProvider?> makeEntry() {
-    return Future.delayed(const Duration(seconds: 2));
-  }
+    db.listen('players/$playerId', updatePlayer);
 
-  void updatePlayerSate(int value) {
-    
   }
 }
